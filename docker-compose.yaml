@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  database:
+    image: 'postgres:latest'
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    networks:
+      - postgres-network
+    volumes:
+      - ./db-data/:/var/lib/postgresql/data/
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "5433:80"
+    env_file:
+      - .env
+    depends_on:
+      - database
+    networks:
+      - postgres-network
+    volumes:
+      - ./pgadmin-data/:/var/lib/pgadmin/
+    restart: always
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+        - "5672:5672"
+        - "15672:15672"
+    volumes:
+        - rabbitMQ\volumes\data\:/var/lib/rabbitmq/
+        - rabbitMQ\volumes\log\:/var/log/rabbitmq
+    networks:
+        - rabbitmq_net
+
+networks:
+  rabbitmq_net:
+    driver: bridge
+  postgres-network:
+      driver: bridge

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>
+    </title>
+</head>
+
+<body>
+    <div class="page">
+        <div class="content">
+            <h1>Welcome To</h1>
+            <h2>Interpol Red List {{name}}</h2>
+
+            <div>
+                <a href="{{ url_for('list_notices') }}"><button  class="button products-link">List For Red List</button></a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        body {
+            /* background-color: rgba(7, 17, 148, 0); */
+            text-align: center;
+        }
+
+        .page {
+            width: 100%;
+            border: 5px solid white;
+            color: rgb(4, 3, 65);
+        }
+
+        .button {
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        
+        .products-link {
+            background-color: #1939c7;
+        }
+    </style>
+
+</body>
+
+</html>
